@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 using namespace std;
 
-LinkedList::LinkedList(): head(NULL), tail(NULL){}
+LinkedList::LinkedList(): head(nullptr), tail(nullptr){}
 
 LinkedList::~LinkedList() {
 	  this->clear();
@@ -9,9 +9,18 @@ LinkedList::~LinkedList() {
 
 }
 
-void LinkedList::push(ListNode* node)
-{
- 	if(head==NULL){
+void LinkedList::push(ListNode* node){
+ 	if(head == nullptr){
+		 head = tail = node;
+	}else{
+		 head->setPrevNode(node);
+		 node->setNextNode(head);
+		 head = node;
+	}
+}
+
+void LinkedList::pushBack(ListNode* node){
+ 	if(head == nullptr){
 		 head = tail = node;
 
 	}else{
@@ -21,29 +30,47 @@ void LinkedList::push(ListNode* node)
 	}
 }
 
-ListNode* LinkedList::getHeadNode(){
+ListNode* LinkedList::peekFirst(){
 	return this->head;
 }
 
-ListNode* LinkedList::getTailNode(){
+ListNode* LinkedList::peekLast(){
 	return this->tail;
 }
 
 string LinkedList::toString(){
 	string content = "";
-	for (ListNode* p = head; p->getNextNode() != NULL; p = p->getNextNode()) {
-      content += to_string(p->getValue())+" -> ";
+	for (ListNode* p = head; p != nullptr; p = p->getNextNode()) {
+      content += to_string(p->getValue());
+      
+      if(p->getNextNode() != nullptr) content += " <-> ";    
+
     }
-    content += to_string(tail->getValue());
+    
     return content;
 }
 
 void LinkedList::clear() {
 	  ListNode* T = tail;
-	      while(T != NULL)
+	      while(T != nullptr)
 	      {
 	          ListNode* T2 = T;
 	          T = T->getPrevNode();
 	          delete T2;
 	      }
+}
+
+ListNode* LinkedList::pop(){
+ 	if(tail == nullptr){
+		 return nullptr;
+	}else{
+		 ListNode* T = tail;		 
+		 if(tail->getPrevNode() != nullptr){
+		 	tail = tail->getPrevNode();
+		 	tail->setNextNode(nullptr);	
+		 }else{
+		 	head = tail = nullptr;	
+		 }
+		 return T;
+	}
 }

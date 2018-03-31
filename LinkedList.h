@@ -10,11 +10,12 @@ class LinkedList
 public:
   LinkedList();
   ~LinkedList();
+  void pushBack(ListNode* node);
   void push(ListNode* node);
-  void pop();
+  ListNode* pop();
   void clear();
-  ListNode* getHeadNode();
-  ListNode* getTailNode();
+  ListNode* peekFirst();
+  ListNode* peekLast();
   string toString();
 };
 

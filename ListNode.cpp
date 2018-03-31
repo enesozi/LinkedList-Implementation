@@ -2,20 +2,18 @@
 #include <iostream>
 using namespace std;
 
-ListNode::ListNode(int value = 0): value(value), prev(NULL), next(NULL){}
+ListNode::ListNode(int value = 0): value(value), prev(nullptr), next(nullptr){}
 
 ListNode::~ListNode(){
-	this->next = this->prev = NULL;
+	this->next = this->prev = nullptr;
 	cout << "Node with value "+to_string(this->value)+" deleted" << endl;
 }
 
-int ListNode::getValue()
-{
+int ListNode::getValue(){
   return this->value;
 }
 
-void ListNode::setValue(int value)
-{
+void ListNode::setValue(int value){
   this->value = value;
 }
 
