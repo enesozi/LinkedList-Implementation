@@ -21,6 +21,8 @@ int main(){
 	list.pushBack(new ListNode(6));
 	list.push(new ListNode(7));
 	
+	ListNode* element = list.findElement(6);
+	cout << "Elem found : " << std::boolalpha << (element == nullptr ? false:true)  << endl;
 	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
 	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
 	cout << "List : " << list.toString() << endl;

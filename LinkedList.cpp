@@ -78,3 +78,10 @@ ListNode* LinkedList::pop(){
 		 return T;
 	}
 }
+
+ListNode* LinkedList::findElement(int value){
+	  if(head == nullptr) return nullptr;
+	  ListNode* p = head;
+	  while(p != NULL && p->getValue() != value) p = p->getNextNode();
+	  return p;
+}
