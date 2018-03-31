@@ -1,6 +1,9 @@
 #ifndef LinkedList_H
 #define LinkedList_H
 #include "ListNode.h"
+#include <iostream>
+using std::string;
+
 
 class LinkedList
 {
@@ -16,6 +19,7 @@ public:
   void clear();
   ListNode* peekFirst();
   ListNode* peekLast();
+  ListNode* findElement(int value);
   string toString();
 };
 

@@ -1,8 +1,11 @@
 #include "ListNode.h"
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
+using std::to_string;
 
-ListNode::ListNode(int value = 0): value(value), prev(nullptr), next(nullptr){}
+
+ListNode::ListNode(int value): value(value), prev(nullptr), next(nullptr){}
 
 ListNode::~ListNode(){
 	this->next = this->prev = nullptr;

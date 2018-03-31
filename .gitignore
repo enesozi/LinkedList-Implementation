@@ -34,6 +34,6 @@
 # CMake files
 CMakeFiles/*
 Makefile
-*.txt
+CMakeCache.txt
 *.cmake
 compile_commands.json

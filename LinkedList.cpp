@@ -1,5 +1,9 @@
 #include "LinkedList.h"
-using namespace std;
+#include <iostream>
+using std::string;
+using std::cout;
+using std::endl;
+using std::to_string;
 
 LinkedList::LinkedList(): head(nullptr), tail(nullptr){}
 

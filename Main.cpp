@@ -1,6 +1,10 @@
-#include "ListNode.cpp"
-#include "LinkedList.cpp"
-using namespace std;
+#include "ListNode.h"
+#include "LinkedList.h"
+#include <iostream>
+
+using std::to_string;
+using std::cout;
+using std::endl;
 
 int main(){
 	LinkedList list;
