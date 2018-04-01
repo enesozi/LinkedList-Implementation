@@ -34,18 +34,17 @@ int main(){
 	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
 	cout << "List : " << list.toString() << endl;
 
-	element = list.findAndExtractElement(6);
-	delete element;
-	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
-	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
-	cout << "List : " << list.toString() << endl;
-
 	element = list.findAndExtractElement(3);
 	delete element;
 	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
 	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
 	cout << "List : " << list.toString() << endl;
 
+	// Result returned by value
+	ListNode elm = list.getElementByIndex(3);
+	
+	cout << "Elem found with value: " << elm.getValue() << endl;
+	cout << "List : " << list.toString() << endl;
 
 	return 0;
 }

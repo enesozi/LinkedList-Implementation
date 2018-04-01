@@ -21,6 +21,7 @@ public:
   ListNode* peekLast();
   ListNode* findElement(int value);
   ListNode* findAndExtractElement(int value);
+  ListNode getElementByIndex(int index);
   string toString();
 };
 

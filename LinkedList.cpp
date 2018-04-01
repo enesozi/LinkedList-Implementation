@@ -105,3 +105,9 @@ ListNode* LinkedList::findAndExtractElement(int value){
 	}
 	return p;
 }
+
+ListNode LinkedList::getElementByIndex(int index){
+	ListNode* p = head;
+	for(int i=0; p != nullptr && i < index; p = p->getNextNode(), i++);
+	return *p;
+}
