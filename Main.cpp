@@ -16,16 +16,36 @@ int main(){
 	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
 	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
 	
-	ListNode* tail = list.pop();
-	delete tail;
+	ListNode* element = list.pop();
+	delete element;
+	
 	list.pushBack(new ListNode(6));
 	list.push(new ListNode(7));
 	
-	ListNode* element = list.findElement(6);
+	element = list.findElement(6);
 	cout << "Elem found : " << std::boolalpha << (element == nullptr ? false:true)  << endl;
 	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
 	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
 	cout << "List : " << list.toString() << endl;
+
+	element = list.findAndExtractElement(7);
+	delete element;
+	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
+	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
+	cout << "List : " << list.toString() << endl;
+
+	element = list.findAndExtractElement(6);
+	delete element;
+	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
+	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
+	cout << "List : " << list.toString() << endl;
+
+	element = list.findAndExtractElement(3);
+	delete element;
+	cout << "Head : " << to_string(list.peekFirst()->getValue()) << endl;
+	cout << "Tail : " << to_string(list.peekLast()->getValue()) << endl;
+	cout << "List : " << list.toString() << endl;
+
 
 	return 0;
 }

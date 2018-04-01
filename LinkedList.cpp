@@ -82,6 +82,26 @@ ListNode* LinkedList::pop(){
 ListNode* LinkedList::findElement(int value){
 	  if(head == nullptr) return nullptr;
 	  ListNode* p = head;
-	  while(p != NULL && p->getValue() != value) p = p->getNextNode();
+	  while(p != nullptr && p->getValue() != value) p = p->getNextNode();
 	  return p;
+}
+
+ListNode* LinkedList::findAndExtractElement(int value){
+	ListNode* p = findElement(value);
+	if(p == nullptr) return nullptr;
+	else{
+		if(p == head){
+			head = head->getNextNode();
+			head->setPrevNode(nullptr);	
+		}else if(p == tail){
+			tail = tail->getPrevNode();
+			tail->setNextNode(nullptr);	
+		}else{
+		    ListNode* prevNode = p->getPrevNode();
+		    ListNode* nextNode = p->getNextNode();
+		    prevNode->setNextNode(nextNode);
+		    nextNode->setPrevNode(prevNode);
+		}
+	}
+	return p;
 }

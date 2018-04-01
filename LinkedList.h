@@ -20,6 +20,7 @@ public:
   ListNode* peekFirst();
   ListNode* peekLast();
   ListNode* findElement(int value);
+  ListNode* findAndExtractElement(int value);
   string toString();
 };
 
