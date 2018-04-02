@@ -26,9 +26,8 @@ void LinkedList::push(int value){
 
 void LinkedList::pushBack(int value){
 	ListNode* node = new ListNode(value);
- 	if(head == nullptr){
+ 	if(tail == nullptr){
 		 head = tail = node;
-
 	}else{
 		 tail->setNextNode(node);
 		 node->setPrevNode(tail);
@@ -57,28 +56,26 @@ string LinkedList::toString(){
 }
 
 void LinkedList::clear() {
-	  ListNode* T = tail;
-	      while(T != nullptr)
-	      {
-	          ListNode* T2 = T;
-	          T = T->getPrevNode();
-	          delete T2;
-	      }
+	
+    ListNode* temp = this->pop();
+
+    while(temp != nullptr){
+    	delete temp;
+    	temp = this->pop();
+    }
 }
 
 ListNode* LinkedList::pop(){
- 	if(tail == nullptr){
-		 return nullptr;
+ 	if(tail == nullptr) return nullptr;
+	
+	ListNode* T = tail;		 
+	if(tail->getPrevNode() != nullptr){
+		tail = tail->getPrevNode();
+		tail->setNextNode(nullptr);	
 	}else{
-		 ListNode* T = tail;		 
-		 if(tail->getPrevNode() != nullptr){
-		 	tail = tail->getPrevNode();
-		 	tail->setNextNode(nullptr);	
-		 }else{
-		 	head = tail = nullptr;	
-		 }
-		 return T;
+		head = tail = nullptr;	
 	}
+	return T;
 }
 
 ListNode* LinkedList::findElement(int value){
@@ -91,23 +88,21 @@ ListNode* LinkedList::findElement(int value){
 ListNode* LinkedList::findAndExtractElement(int value){
 	ListNode* p = findElement(value);
 	if(p == nullptr) return nullptr;
-	else{
-		if(p == head){
-			head = head->getNextNode();
-			head->setPrevNode(nullptr);	
-		}else if(p == tail){
-			tail = tail->getPrevNode();
-			tail->setNextNode(nullptr);	
-		}else{
-		    ListNode* prevNode = p->getPrevNode();
-		    ListNode* nextNode = p->getNextNode();
-		    prevNode->setNextNode(nextNode);
-		    nextNode->setPrevNode(prevNode);
-		}
+
+	if(p == head){
+		head = head->getNextNode();
+		head->setPrevNode(nullptr);	
+	}else if(p == tail){
+		tail = tail->getPrevNode();
+		tail->setNextNode(nullptr);	
+	}else{
+	    ListNode* prevNode = p->getPrevNode();
+	    ListNode* nextNode = p->getNextNode();
+	    prevNode->setNextNode(nextNode);
+	    nextNode->setPrevNode(prevNode);
 	}
 	return p;
 }
-
 
 ListNode* LinkedList::getElementByIndex(int index){
 	ListNode* p = head;
@@ -127,28 +122,25 @@ bool LinkedList::insertElementByIndex(int value, int index){
 	int i;
 	for(i=0; p != nullptr && i < index; p = p->getNextNode(), i++);
 	
-	if(i < index){
-		return false;
-	}else{
-		ListNode* node = new ListNode(value);
-		if(p == head){
-			head->setPrevNode(node);
-			node->setNextNode(head);
-			head = node;		
-		}else if(p == tail){
-			ListNode* prevNode = tail->getPrevNode();
-			prevNode->setNextNode(node);
-			node->setNextNode(tail);
-			node->setPrevNode(prevNode);	
-			tail->setPrevNode(node);
-		}else{
-			ListNode* prevNode = p->getPrevNode();
-			node->setPrevNode(prevNode);
-			node->setNextNode(p);
-			prevNode->setNextNode(node);
-			p->setPrevNode(node);	
-		}
-		return true;
-	}
+	if(i < index) return false;
 	
+	ListNode* node = new ListNode(value);
+	if(p == head){
+		head->setPrevNode(node);
+		node->setNextNode(head);
+		head = node;		
+	}else if(p == tail){
+		ListNode* prevNode = tail->getPrevNode();
+		prevNode->setNextNode(node);
+		node->setNextNode(tail);
+		node->setPrevNode(prevNode);	
+		tail->setPrevNode(node);
+	}else{
+		ListNode* prevNode = p->getPrevNode();
+		node->setPrevNode(prevNode);
+		node->setNextNode(p);
+		prevNode->setNextNode(node);
+		p->setPrevNode(node);	
+	}
+	return true;
 }

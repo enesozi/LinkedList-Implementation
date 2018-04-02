@@ -8,7 +8,7 @@ using std::to_string;
 ListNode::ListNode(int value): value(value), prev(nullptr), next(nullptr){}
 
 ListNode::~ListNode(){
-	this->next = this->prev = nullptr;
+
 	cout << "Node with value "+to_string(this->value)+" deleted" << endl;
 }
 
