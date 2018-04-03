@@ -144,3 +144,17 @@ bool LinkedList::insertElementByIndex(int value, int index){
 	}
 	return true;
 }
+
+void LinkedList::sort(int asc){
+	if(head != nullptr && head->getNextNode() != nullptr)
+	   for(ListNode* temp1 = head; temp1->getNextNode() != nullptr; temp1 = temp1->getNextNode()){
+	       for(ListNode* temp2 = temp1->getNextNode(); temp2 != nullptr; temp2 = temp2->getNextNode()){
+	          if( ( asc && temp1->getValue() > temp2->getValue()) ||
+	          	  (!asc && temp1->getValue() < temp2->getValue()) ){
+	          		int value = temp1->getValue();
+	          		temp1->setValue(temp2->getValue());
+	          		temp2->setValue(value);
+	          }
+	       }
+	   }				
+}

@@ -23,6 +23,7 @@ public:
   ListNode* findAndExtractElement(int value);
   ListNode* getElementByIndex(int index);
   bool insertElementByIndex(int value, int index);
+  void sort(int asc = 1);
   int length();
   string toString();
 };

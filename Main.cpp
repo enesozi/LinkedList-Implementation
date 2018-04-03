@@ -21,6 +21,7 @@ void displayMenu(){
 	cout << "10: Print length" << endl;
 	cout << "11: Print list content" << endl;
 	cout << "12: Clear the list" << endl;
+	cout << "13: Sort the list" << endl;
 	cout << "0:  To exit the program" << endl;
 }
 
@@ -28,11 +29,11 @@ int main(){
 	cout << "Welcome to Simple LinkedList Implementation" << endl;
 	
 	LinkedList list;
-	int answer = -1;
+	int answer;
 	int value;
 	int index;
 	ListNode* element;
-
+	int asc;
 	while(true){
 		displayMenu();
 		cin >> answer;
@@ -139,6 +140,14 @@ int main(){
 			case 12:
 			{
 				list.clear();
+				break;
+			}
+			case 13:
+			{
+				cout << "Enter 1 for ascending. Enter 0 for descending" << endl;
+				cin >> asc;
+				list.sort(asc);
+				cout << "List: " << list.toString() << endl;
 				break;
 			}
 			case 0:
