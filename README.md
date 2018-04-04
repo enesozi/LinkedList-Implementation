@@ -22,5 +22,5 @@
 * **Finally, you can run the program**
 	* ./main.out
 
-* **In case you wonder the differences between *CMake* and *Make*, you can check following link for good explanation.**
+* **In case you wonder the differences between *CMake* and *Make*, you can check the following link for a good explanation.**
   * [prateekvjoshi.com](https://prateekvjoshi.com/2014/02/01/cmake-vs-make/)
